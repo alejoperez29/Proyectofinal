@@ -1,0 +1,30 @@
+/*
+Custom Css
+*/
+.carousel-inner img {
+    width: 120%;
+    height: 550px;
+    object-fit: cover;
+}
+
+.bg-rosa {
+    background-color: #f78fb3 !important; /* Un rosado suave */
+}
+
+.bg-pink {
+    background-color: #ff69b4 !important; /* rosa fuerte */
+}
+
+#tempaltemo_footer {
+    color: white !important;
+    font-weight: bold !important;
+}
+
+#tempaltemo_footer a,
+#tempaltemo_footer h2,
+#tempaltemo_footer p,
+#tempaltemo_footer li,
+#tempaltemo_footer label {
+    color: white !important;
+    font-weight: bold !important;
+}

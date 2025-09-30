@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>SUNRISE</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="img/apple-icon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/templatemo.css">
+    <link rel="stylesheet" href="css/custom.css">
+
+    <!-- Load fonts style after rendering the layout styles -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+    <link rel="stylesheet" href="css/fontawesome.min.css">
+    
+    </head>
+<body>
+<!-- Contenedor para cargar la barra de menú usando JavaScript -->
+<div id="menu"></div>
+
+<!-- Contenido de la página - Inicio -->
+ <!-- Start Content Page -->
+    <div class="container-fluid py-5" style="background-color: #f8c6d7;">
+    <div class="col-md-6 m-auto text-center">
+        <h1 class="h1">Contáctanos</h1>
+        <p>
+            Te escuchamos y diseñamos el collar ideal para resaltar tu estilo en el día a día.
+        </p>
+    </div>
+</div>
+
+ <div class="container pt-5">
+  <div class="row"> 
+    </div>
+    <!-- Start Sección Mapa y Formulario -->
+<div class="container py-5">
+  <div class="row">
+    
+    <!-- Columna Mapa -->
+    <div class="col-md-6 mb-4">
+      <h3 class="mb-3 text-center">Ubicación</h3>
+      <div style="width:100%; height:100%; border-radius:10px; overflow:hidden;">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d254896.00790908944!2d-76.62147579848694!3d3.411044523421121!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e30a6f0cc4bb3f1%3A0x1f0fb5e952ae6168!2sCali%2C%20Valle%20del%20Cauca!5e0!3m2!1ses-419!2sco!4v1758587050012!5m2!1ses-419!2sco" 
+          width="100%" 
+          height="350" 
+          style="border:0;" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+
+    <!-- Columna Formulario -->
+    <div class="col-md-6">
+      <form id="contactForm" method="post" role="form" class="p-3 shadow rounded bg-light">
+        <div class="row">
+          <div class="form-group col-md-6 mb-3">
+            <label for="name">Nombre</label>
+            <input type="text" class="form-control mt-1" id="name" name="name" placeholder="Name" required>
+          </div>
+          <div class="form-group col-md-6 mb-3">
+            <label for="email">Correo</label>
+            <input type="email" class="form-control mt-1" id="email" name="email" placeholder="Email" required>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="subject">Asunto</label>
+          <input type="text" class="form-control mt-1" id="subject" name="subject" placeholder="Subject" required>
+        </div>
+        <div class="mb-3">
+          <label for="message">Mensaje</label>
+          <textarea class="form-control mt-1" id="message" name="message" placeholder="Message" rows="6" required></textarea>
+        </div>
+        <div class="row">
+          <div class="col text-end mt-2">
+            <button type="submit" class="btn btn-success btn-lg px-3">Enviar</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- End Sección Mapa y Formulario -->
+
+<!-- Script para mostrar popup -->
+<script>
+  document.getElementById("contactForm").addEventListener("submit", function(event){
+    event.preventDefault(); // evita que la página se recargue
+    alert("✅ Enviado correctamente los datos");
+    this.reset(); // limpia el formulario después de enviar
+  });
+</script>
+
+<!-- Contenido de la página - Final -->
+
+<!-- Contenedor para cargar el pie de página usando JavaScript -->
+<div id="pie"></div>
+
+
+ <!-- Start Script -->
+    <script src="js/jquery-1.11.0.min.js"></script>
+    <script src="js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/templatemo.js"></script>
+    <script src="js/custom.js"></script>
+        <!-- End Script -->
+
+        <script>
+ document.addEventListener("DOMContentLoaded", () => {
+ cargarFragmento("menu", "menu.html");
+ cargarFragmento("pie", "pie.html");
+ });
+ </script>
+
+</body>
+
+</html>

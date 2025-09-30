@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>SUNRISE</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="img/apple-icon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/templatemo.css">
+    <link rel="stylesheet" href="css/custom.css">
+
+    <!-- Load fonts style after rendering the layout styles -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+    <link rel="stylesheet" href="css/fontawesome.min.css">
+</head>
+
+<body>
+    <!-- Contenedor para cargar la barra de menú usando JavaScript -->
+    <div id="menu"></div>
+
+    <!-- Sección Finalizar la compra -->
+    <section class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="p-4 shadow rounded bg-light">
+                    <h2 class="mb-4 text-center">Finalizar la compra</h2>
+                    
+                    <form id="formCompra">
+                        <div class="mb-3">
+                            <h2 class="h5 mt-4 text-center">
+                                Su compra total es de: <b id="etiqueta_total">$0</b>
+                            </h2>
+                        </div>
+                        <div class="mb-3">
+                            <label for="tarjeta" class="form-label">Número de Tarjeta</label>
+                            <input type="text" class="form-control" id="tarjeta" placeholder="1234 5678 9012 3456" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="expiracion" class="form-label">Fecha de expiración (MM/AA)</label>
+                            <input type="text" class="form-control" id="expiracion" placeholder="MM/AA" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="cvc" class="form-label">CVC</label>
+                            <input type="text" class="form-control" id="cvc" placeholder="123" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Pagar</button>
+                    </form>
+                    
+                    <!-- Mensaje de éxito oculto -->
+                    <div id="mensajeExito" class="alert alert-success mt-3 text-center" style="display:none;">
+                        ✅ ¡Compra exitosa!
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contenedor para cargar el pie de página usando JavaScript -->
+    <div id="pie"></div>
+
+    <!-- Start Script -->
+    <script src="js/jquery-1.11.0.min.js"></script>
+    <script src="js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/templatemo.js"></script>
+    <script src="js/custom.js"></script>
+    <!-- End Script -->
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            cargarFragmento("menu", "menu.html");
+            cargarFragmento("pie", "pie.html");
+
+            // Leer carrito desde localStorage
+            let etiqueta_total = document.getElementById("etiqueta_total");
+            let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+            let total = 0;
+
+            carrito.forEach(item => {
+                let precio = parseFloat(item.precio) || 0;
+                let cantidad = parseInt(item.cantidad) || 1; // si no hay cantidad, por defecto 1
+                let subtotal = precio * cantidad;
+
+                console.log(`Producto: ${item.nombre} | Precio: ${precio} | Cantidad: ${cantidad} | Subtotal: ${subtotal}`);
+
+                total += subtotal;
+            });
+
+            // Mostrar el total formateado
+            etiqueta_total.innerText = total.toLocaleString("es-CO", {
+                style: "currency",
+                currency: "COP"
+            });
+
+            // Capturar el formulario y mostrar mensaje de éxito
+            const form = document.getElementById("formCompra");
+            const mensajeExito = document.getElementById("mensajeExito");
+
+            form.addEventListener("submit", function (e) {
+                e.preventDefault(); // Evita recargar la página
+                mensajeExito.style.display = "block"; // Muestra mensaje
+                form.reset(); // Limpia el formulario
+
+                // Vaciar carrito en localStorage
+                localStorage.removeItem("carrito");
+            });
+        });
+    </script>
+
+</body>
+
+</html>
